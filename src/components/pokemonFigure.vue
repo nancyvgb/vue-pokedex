@@ -28,7 +28,6 @@ export default {
 <style lang="scss" scoped>
 .pokemon-container {
   width: 205px;
-  border-radius: 5px;
   cursor: pointer;
   &:hover {
     opacity: 1;
@@ -36,6 +35,7 @@ export default {
   }
   .pokemon-img-container {
     background: #f2f2f2;
+    border-radius: 10px;
   }
   .pokemon-info {
     background: #fff;

@@ -1,13 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Pokedesk from "../views/Pokedesk.vue"
+import Pokedex from "../views/Pokedex.vue"
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home
   },
@@ -21,9 +21,9 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue")
   }, 
   {
-    path: "/pokedex",
-    name: "pokedex",
-    component: Pokedesk
+    path: "/",
+    name: "pokedex-list",
+    component: Pokedex
 
   }
 ];

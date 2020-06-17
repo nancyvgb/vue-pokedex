@@ -20,7 +20,7 @@ export default {
     methods: {
       login() {
            this.$router.push({
-                name: 'pokedex',
+                name: 'pokedex-list',
             })
       }  
     }
