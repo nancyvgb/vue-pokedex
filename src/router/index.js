@@ -2,6 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Pokedex from "../views/Pokedex.vue"
+import NProgress from 'nprogress'
+
 
 Vue.use(VueRouter);
 
@@ -23,7 +25,8 @@ const routes = [
   {
     path: "/",
     name: "pokedex-list",
-    component: Pokedex
+    component: Pokedex,
+    props: true
 
   }
 ];
@@ -33,5 +36,14 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+router.beforeEach((routeTo, routeFrom, next) => {
+  NProgress.start()
+  next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
 
 export default router;

@@ -3,7 +3,8 @@ export const namespaced = true;
 
 export const state = {
     pokeList: [],
-    pokemonsTotal: 0
+    pokemonsTotal: 0,
+    perPage: 10
 }
 export const mutations = {
     SET_POKEMON_LIST(state, pokeList) {
@@ -15,8 +16,8 @@ export const mutations = {
 };
 
 export const actions = {
-    fetchPokemonList({commit}, { perPage, page }) {
-        PokedeskService.getEvents(perPage, page).then(response => {
+    fetchPokemonList({commit, state}, { page }) {
+       return PokedeskService.getEvents(state.perPage, page).then(response => {
             commit('SET_POKEMON_LIST', response)
          //   commit('SET_TOTAL_POKEMON', response.count)
         }).catch(error => {

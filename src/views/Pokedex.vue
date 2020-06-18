@@ -15,21 +15,35 @@
 
 <script>
  import pokemonFigure from '@/components/pokemonFigure.vue';
- import {mapState} from 'vuex'
+ import {mapState} from 'vuex';
+ import store from '@/store/index'
+ function getPageEvents(routeTo, next){
+   const currentPage =  parseInt(routeTo.query.page) || 1;
+       store.dispatch('pokeList/fetchPokemonList', {
+          page: currentPage
+        }).then(()=>{
+          routeTo.params.page = currentPage;
+          next();
+        })
+   }
     export default {
+    props: {
+      page: {
+        type: Number,
+        required: true
+      }
+    }, 
     components: {
        pokemonFigure
     },
-    created() {
-        this.$store.dispatch('pokeList/fetchPokemonList', 
-        { perPage: 10,
-          page: this.page
-        })
+    beforeRouteEnter(routeTo, routeFrom, next){
+      getPageEvents(routeTo, next)
+    },
+    beforeRouteUpdate(routeTo, routeFrom, next){
+      getPageEvents(routeTo, next)
     },
     computed: {
-    page() {
-      return parseInt(this.$route.query.page) || 1
-    },
+   
      /* hasNextPage() {
        console.log('this.pokeList.pokemonsTotal', this.pokeList.pokemonsTotal)
       return this.pokeList.pokemonsTotal < this.page * 10
