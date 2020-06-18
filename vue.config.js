@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath: 'pokedexWebsite'
+    publicPath: 'vue-pokedex'
 }
