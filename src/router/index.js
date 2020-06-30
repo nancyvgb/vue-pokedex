@@ -1,15 +1,15 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import Pokedex from "../views/Pokedex.vue"
-import NProgress from 'nprogress'
-
+import Home from "../views/Login.vue";
+import Pokedex from "../views/Pokedex.vue";
+import Register from "../views/Register.vue";
+import NProgress from "nprogress";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/home",
+    path: "/",
     name: "Home",
     component: Home
   },
@@ -21,13 +21,17 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }, 
+  },
   {
-    path: "/",
+    path: "/pokedex",
     name: "pokedex-list",
     component: Pokedex,
     props: true
-
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: Register
   }
 ];
 
@@ -38,12 +42,12 @@ const router = new VueRouter({
 });
 
 router.beforeEach((routeTo, routeFrom, next) => {
-  NProgress.start()
-  next()
-})
+  NProgress.start();
+  next();
+});
 
 router.afterEach(() => {
-  NProgress.done()
-})
+  NProgress.done();
+});
 
 export default router;

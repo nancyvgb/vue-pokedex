@@ -1,23 +1,37 @@
 <template>
-
   <div id="app">
-    <div id="nav">
-      <router-link to="/home">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view :key="$route.fullPath" />
+    <app-nav />
+    <router-view class="page" :key="$route.fullPath" />
   </div>
-
 </template>
-<script>
-export default {
- 
 
-}
+<script>
+import AppNav from "./components/AppNav";
+
+export default {
+  components: { AppNav }
+};
 </script>
 
 <style>
-#app {
+@import "./assets/styles/global.scss";
+.page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 56px);
+  background-image: url("./assets/container_bg.png");
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+/* #app {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 56px);
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -27,7 +41,7 @@ export default {
   background-size: cover;
   height: 100%;
   overflow: hidden;
-}
+} */
 
 #nav {
   padding: 30px;
@@ -43,11 +57,9 @@ export default {
 }
 body {
   margin: 0;
-  height:100%;
+  height: 100%;
 }
-
 p {
   margin: 0;
 }
-
 </style>

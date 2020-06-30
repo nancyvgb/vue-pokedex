@@ -17,11 +17,18 @@
 
 <script>
 export default {
+  data() {
+    return {
+      email: '',
+      pasword: ''
+    }
+    },
     methods: {
       login() {
-           this.$router.push({
-                name: 'pokedex-list',
-            })
+           this.$store
+           .dispatch("user/login",{
+             email
+           })
       }  
     }
 };

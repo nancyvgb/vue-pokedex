@@ -59,7 +59,7 @@
      display: grid;
      width: fit-content;
      margin: auto;
-     grid-template-columns: 200px 200px 200px 200px;
+     grid-template-columns: 200px 200px 200px;
       column-gap: 10px;
       row-gap: 1em;
       

@@ -4,7 +4,7 @@ export const namespaced = true;
 export const state = {
     pokeList: [],
     pokemonsTotal: 0,
-    perPage: 10
+    perPage: 9
 }
 export const mutations = {
     SET_POKEMON_LIST(state, pokeList) {
